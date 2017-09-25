@@ -35,7 +35,8 @@ public class BwreservCliCommandsImpl implements BwreservCliCommands {
 
     @Override
     public Object testCommand(Object testArgument) {
-        EvalFuncInput input = new EvalFuncInputBuilder().setParm(1l).build();
+        long parm = Long.valueOf(testArgument.toString());
+        EvalFuncInput input = new EvalFuncInputBuilder().setParm(parm).build();
         Future<RpcResult<EvalFuncOutput>> future = bwreservService.evalFunc(input);
         String ret="failed";
         try {

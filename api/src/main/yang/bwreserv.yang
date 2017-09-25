@@ -7,9 +7,43 @@ module bwreserv {
         description "Initial revision of bwreserv model";
     }
 
+    typedef link-id-type {
+        type string;
+    }
+    typedef node-id-type {
+        type string;
+    }
+
     container tx{
         leaf bw{
             type int64;
+        }
+    }
+
+    container graph {
+        list node {
+            key "nodeid";
+            leaf nodeid {
+                type node-id-type;
+            }
+            leaf-list node-links {
+                type link-id-type;
+            }
+        }
+        list link {
+            key "linkid";
+            leaf linkid {
+                type link-id-type;
+            }
+            leaf from {
+                type node-id-type;
+            }
+            leaf to {
+                type node-id-type;
+            }
+            leaf bw {
+                type int64;
+            }
         }
     }
 
