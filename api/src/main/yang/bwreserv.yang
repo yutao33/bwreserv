@@ -1,0 +1,28 @@
+module bwreserv {
+    yang-version 1;
+    namespace "urn:opendaylight:params:xml:ns:yang:bwreserv";
+    prefix "bwreserv";
+
+    revision "2015-01-05" {
+        description "Initial revision of bwreserv model";
+    }
+
+    container tx{
+        leaf bw{
+            type int64;
+        }
+    }
+
+    rpc eval-func {
+        input {
+            leaf parm {
+                type int64;
+            }
+        }
+        output {
+            leaf result {
+                type string;
+            }
+        }
+    }
+}
